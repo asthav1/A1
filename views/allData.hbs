@@ -1,0 +1,61 @@
+<!-- views/allData.hbs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Products Data</title>
+   
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .zero-reviews {
+            background-color: #ef6b6b; /* Light red background for rows with zero reviews */
+        }
+       
+
+    </style>
+</head>
+<body>
+    <h1>All Products Data</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ASIN</th>
+                <th>Title</th>
+                <th>Stars</th>
+                <th>Reviews</th>
+                <th>Price</th>
+                <th>List Price</th>
+                <th>Category</th>
+                <th>Best Seller</th>
+                <th>Bought In Last Month</th>
+            </tr>
+        </thead>
+       <tbody>
+            {{#each products}}
+                <tr {{#if (eq reviews 0)}}class="zero-reviews"{{/if}}>
+                    <td>{{asin}}</td>
+                    <td>{{title}}</td>
+                    <td>{{stars}}</td>
+                    <td>{{formatReviews reviews}}</td>
+                    <td>{{price}}</td>
+                    <td>{{listPrice}}</td>
+                    <td>{{categoryName}}</td>
+                    <td>{{isBestSeller}}</td>
+                    <td>{{boughtInLastMonth}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>
